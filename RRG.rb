@@ -13,6 +13,8 @@ def show_help
         "All other arguments will be treated as report pages"
 end
 
+body = []
+
 # Simple option parser
 unless ARGV.empty?
   arg = ARGV.shift
@@ -25,9 +27,14 @@ unless ARGV.empty?
   when '-o', '-output', '--output'
     report = ARGV.shift
   else
-    body = ARGV
+    body << arg
   end
-end 
+end
+
+# Set initial configurations
+title  ||= "Title.tex"
+body   << "README.md" if body.empty?
+report ||= "Report.pdf"
 
 # Check if title file exists
 unless File.exists? title
