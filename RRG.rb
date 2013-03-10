@@ -1,10 +1,5 @@
 #!/usr/bin/env ruby -W0
 
-# Set initial configurations
-title  = "Title.tex"
-body   = ["README.md"]
-report = "Report.pdf"
-
 def show_help
   puts  "Help:", "\n",
         "-h | -help   | --help\t\t\tShow help",
@@ -59,7 +54,7 @@ body.each_with_index do |doc, idx|
   file = File.open(doc, 'rb').read
 
   # Get an array of image URLs
-  urls = file.scan(/!\[\w*\]\((\S*)\)/).flatten
+  urls = file.scan(/!\[[\w|\s]*\]\((\S*)\)/).flatten
 
   # Get local paths to images, assuming they are all in a folder in repo
   paths = urls.map{|url| url.split("/").last(2).join("/")}
@@ -68,10 +63,10 @@ body.each_with_index do |doc, idx|
   urls.each_with_index do |url, i| file.gsub! url, paths[i] end
 
   # Write the modified file: file#{idx}.md
-  File.open("file\##{idx}.md", 'w') { |f| f.write file }
+  File.open("file#{idx}.md", 'w') { |f| f.write file }
 
   # Add file name to array of modified files, to work with later
-  files << "file\##{idx}.md"
+  files << "file#{idx}.md"
 end
 
 # Create "temp" directory
@@ -105,4 +100,3 @@ system "rm -Rf temp"
 files.each do |file|
   system "rm #{file}"
 end
-
