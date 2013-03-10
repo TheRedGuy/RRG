@@ -12,13 +12,21 @@ Prerequisites
 
 Usage
 -----
-Copy/paste this script in the directory of your lab or project.  
-It expects in the same directory 2 files:
+Copy/paste this script in the directory of your lab or project. 
+`ruby RRG.rb -h` will show you the help.
+If you don't expicitly specify the title, content and output files, the script expects you to have in the same directory 2 files:
+
 1. `Title.tex` which is the title page of your report.
 2. `README.md` which is the contets of your report.
+
 In this repo you'll fine examples of both files. Feel free to use them as templates. Also, you can find the resulting PDF that this script generated.
 
-Note that the filenames are hard-coded in the script. If you want to change them, feel free to do so, it shoudn't be too difficult.
+If you want to change some default behaviour, you can use the following flags and arguments:
+
+- `(-h | -help   | --help)`                 to show the help.
+- `(-t | -title  | --title)  path/to/file`  to specify the title file (`.tex` format).
+- `(-o | -output | --output) path/to/file`  to specify the output file (must end in `.pdf`).
+- any other argument will be treated as input file (must be of `.md` format).
 
 Once you have everything you need, just run the script:
 ```sh
