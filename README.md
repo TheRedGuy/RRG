@@ -32,7 +32,7 @@ Once you have everything you need, just run the script:
 ```sh
 ruby RRG.rb
 ```
-You should now see a new PDF, with the name `Report_[current_dir_name].pdf` (this is also hard-coded; change it to your needs).
+You should now see a new PDF, with the name `Report.pdf` (if you didn't specify an output filename).
 
 Advanced
 --------
